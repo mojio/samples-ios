@@ -15,5 +15,6 @@
 @property (nonatomic) double fuelLevel;
 @property (nonatomic) double fuelEfficiency;
 @property (nonatomic, strong) NSString *vehicleName;
+@property (nonatomic, strong) NSString *vehicleLicensePlate;
 
 @end

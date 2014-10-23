@@ -17,14 +17,17 @@
 
 @interface VehicleViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *vehicleNameAndLicenseLabel;
 @property (strong, nonatomic) IBOutlet UILabel *vehicleAddressLabel;
 @property (strong, nonatomic) IBOutlet UILabel *fuelEfficiencyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *fuelLabel;
 @property (strong, nonatomic) IBOutlet UIButton *viewCarButton;
+@property (strong, nonatomic) IBOutlet UIButton *refreshPageButton;
 
 @property (strong, nonatomic) Vehicle *vehicle;
 
 -(IBAction)viewCarButtonPressed:(id)sender;
+-(IBAction)refreshVehicleData:(id)sender;
 
 @end
 
@@ -61,6 +64,19 @@
             NSArray *data = [responseObject objectForKey:@"Data"];
             NSDictionary *firstVehicleObject = [data firstObject];
             
+            NSString *name = [firstVehicleObject objectForKey:@"Name"];
+            if (![name isEqual:[NSNull null]]) {
+                self.vehicle.vehicleName = name;
+            }
+            
+            NSString *licensePlate = [firstVehicleObject objectForKey:@"LicensePlate"];
+            
+            if (![licensePlate isEqual:[NSNull null]]) {
+                self.vehicle.vehicleLicensePlate = licensePlate;
+            }
+            
+            [self performSelectorOnMainThread:@selector(displayVehicleNameAndLicense) withObject:nil waitUntilDone:NO];
+            
             NSNumber *fuelEfficiency = [firstVehicleObject objectForKey:@"LastFuelEfficiency"];
             NSNumber *fuelLevel = [firstVehicleObject objectForKey:@"FuelLevel"];
             NSNumber *lat = [[firstVehicleObject objectForKey:@"LastLocation"] objectForKey:@"Lat"];
@@ -93,10 +109,25 @@
     
 }
 
+-(void) displayVehicleNameAndLicense {
+    NSMutableString *nameAndLicenseLabel = [NSMutableString string];
+    if (self.vehicle.vehicleName != nil) {
+        [nameAndLicenseLabel appendString:self.vehicle.vehicleName];
+    }
+    if (self.vehicle.vehicleLicensePlate != nil) {
+        [nameAndLicenseLabel appendString:self.vehicle.vehicleLicensePlate];
+    }
+    
+    if (![nameAndLicenseLabel isEqualToString:@""]) {
+        self.vehicleNameAndLicenseLabel.text = nameAndLicenseLabel;
+    }
+    else
+        self.vehicleNameAndLicenseLabel.text = @"";
+}
+
 -(void) displayVehicleData {
     self.fuelLabel.text = [NSString stringWithFormat:@"%f", self.vehicle.fuelLevel];
     self.fuelEfficiencyLabel.text = [NSString stringWithFormat:@"%f", self.vehicle.fuelEfficiency];
-    
 }
 
 -(void) displayVehicleAddress {
