@@ -73,10 +73,6 @@
         NSLog(@"Failure message is %@", [error localizedDescription]);
     }];
     
-    //https://api.moj.io/v1/login/4ee04b80-d0bf-4f23-8ae5-641a9a6660af?secretKey=403b2ab4-8a2d-4fbd-b1eb-d57b83d52ca1&userOrEmail=ashisha@moj.io&password=Test123
-    
-    //secretkey = 403b2ab4-8a2d-4fbd-b1eb-d57b83d52ca1
-    // base url = https://api.moj.io/v1/login/4ee04b80-d0bf-4f23-8ae5-641a9a6660af
 }
 
 
