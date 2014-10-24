@@ -143,6 +143,10 @@
     [self performSegueWithIdentifier:@"showCarSegue" sender:nil];
 }
 
+-(IBAction)refreshVehicleData:(id)sender {
+    [self downloadVehicleData];
+}
+
 #pragma mark - Navigation
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
