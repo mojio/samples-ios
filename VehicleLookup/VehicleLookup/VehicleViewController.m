@@ -15,6 +15,9 @@
 #import "AFNetworking.h"
 #import "Vehicle.h"
 
+#import "SignalR.h"
+
+
 @interface VehicleViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *vehicleNameAndLicenseLabel;
@@ -23,6 +26,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *fuelLabel;
 @property (strong, nonatomic) IBOutlet UIButton *viewCarButton;
 @property (strong, nonatomic) IBOutlet UIButton *refreshPageButton;
+
+@property (strong, nonatomic) SRConnection *connection;
+@property (strong, nonatomic) SRHubConnection *hubConnection;
 
 @property (strong, nonatomic) Vehicle *vehicle;
 
@@ -48,7 +54,27 @@
     
     self.vehicle = [[Vehicle alloc] init];
     
+    NSDictionary *params = @{@"sortBy" : @"Time", @"desc" : @"true"};
+    
+    
+    
+    self.hubConnection = [SRHubConnection connectionWithURL:@"https://api.moj.io/v1/Events" queryString:@"sortBy=Time&desc=true"];
+    self.hubConnection.headers = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UserPrefs mojioApiToken], @"MojioAPIToken", nil];
+    
+    SRHubProxy *messages = [self.hubConnection createHubProxy:@"chat"];
+    [messages on:@"addMessage" perform:self selector:@selector(addMessage:)];
+    [self.hubConnection start];
+
+    self.connection = [SRConnection connectionWithURL:@"https://api.moj.io:443/v1/Events" query:params];
+    self.connection.received = ^(NSString *data){
+        NSLog(@"%@", data
+              );
+    };
     [self downloadVehicleData];
+}
+
+-(void) addMessage : (NSString *)message {
+    NSLog(@"%@", message);
 }
 
 -(void) downloadVehicleData {
