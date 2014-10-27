@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7F67C451-47CA-4DF1-B35B-3DC214D50192</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VehicleLookup</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3781073A-1E11-408E-A49E-63E6334DAB78</key>
+		<string>https://github.com/mojio/samples-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VehicleLookup/VehicleLookup.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3781073A-1E11-408E-A49E-63E6334DAB78</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mojio/samples-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3781073A-1E11-408E-A49E-63E6334DAB78</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3781073A-1E11-408E-A49E-63E6334DAB78</string>
+			<key>IDESourceControlWCCName</key>
+			<string>samples-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -59,7 +59,7 @@
                         <outlet property="loginButton" destination="F69-AZ-Uj1" id="iFg-mc-bHt"/>
                         <outlet property="passwordField" destination="1aq-Wy-L2t" id="14L-kE-OBW"/>
                         <outlet property="userNameField" destination="8JH-T6-TTv" id="aox-Wd-bLa"/>
-                        <segue destination="7kt-VD-hdQ" kind="show" identifier="loginSuccess" id="XA0-4h-0XG"/>
+                        <segue destination="7kt-VD-hdQ" kind="push" identifier="loginSuccess" id="XA0-4h-0XG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -84,7 +84,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-1d-Ixh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="276" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-1d-Ixh">
                                 <rect key="frame" x="28" y="202" width="276" height="82"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -154,7 +154,7 @@
                         <outlet property="vehicleAddressLabel" destination="kTr-1d-Ixh" id="DgS-db-sVm"/>
                         <outlet property="vehicleNameAndLicenseLabel" destination="LtJ-Cy-6I5" id="Rfc-OK-geh"/>
                         <outlet property="viewCarButton" destination="JQc-QO-VZf" id="I14-jE-Rfk"/>
-                        <segue destination="FDd-6k-ocE" kind="show" identifier="showCarSegue" id="Wcg-Xt-Byb"/>
+                        <segue destination="FDd-6k-ocE" kind="push" identifier="showCarSegue" id="Wcg-Xt-Byb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tss-T7-bbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,4 +208,9 @@
             <point key="canvasLocation" x="-116" y="-102"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>
