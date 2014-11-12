@@ -67,7 +67,9 @@
             if (mojioApiToken)
                 [UserPrefs saveMojioApiToken:mojioApiToken];
             
-            [self performSegueWithIdentifier:@"loginSuccess" sender:nil];
+            // send message to the calling method
+            [self.delegate didLoginWithController:self];
+//            [self performSegueWithIdentifier:@"loginSuccess" sender:nil];
         }
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {

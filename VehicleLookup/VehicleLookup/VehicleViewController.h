@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "LoginViewController.h"
 
-@interface VehicleViewController : BaseViewController
+@interface VehicleViewController : BaseViewController <LoginControllerDelegate>
 
 @end

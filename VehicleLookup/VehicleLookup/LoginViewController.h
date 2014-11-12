@@ -7,7 +7,16 @@
 //
 
 #import "BaseViewController.h"
+@class LoginViewController;
+
+@protocol LoginControllerDelegate <NSObject>
+
+-(void) didLoginWithController : (LoginViewController*) loginController;
+
+@end
 
 @interface LoginViewController : BaseViewController
+
+@property (nonatomic, weak) id<LoginControllerDelegate> delegate;
 
 @end

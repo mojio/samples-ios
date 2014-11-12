@@ -52,25 +52,16 @@
 {
     [super viewDidLoad];
     
+    // present the login controller
+    [self performSegueWithIdentifier:@"showLoginSegue" sender:nil];
+}
+
+-(void) onLogin {
     self.vehicle = [[Vehicle alloc] init];
     
-    NSDictionary *params = @{@"sortBy" : @"Time", @"desc" : @"true"};
-    
-    
-    
-    self.hubConnection = [SRHubConnection connectionWithURL:@"https://api.moj.io/v1/Events" queryString:@"sortBy=Time&desc=true"];
-    self.hubConnection.headers = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UserPrefs mojioApiToken], @"MojioAPIToken", nil];
-    
-    SRHubProxy *messages = [self.hubConnection createHubProxy:@"chat"];
-    [messages on:@"addMessage" perform:self selector:@selector(addMessage:)];
-    [self.hubConnection start];
-
-    self.connection = [SRConnection connectionWithURL:@"https://api.moj.io:443/v1/Events" query:params];
-    self.connection.received = ^(NSString *data){
-        NSLog(@"%@", data
-              );
-    };
+    // Create SignalR connection here to observe the vehicle
     [self downloadVehicleData];
+
 }
 
 -(void) addMessage : (NSString *)message {
@@ -180,6 +171,19 @@
         MapViewController *mapController = [segue destinationViewController];
         mapController.vehicle = self.vehicle;
     }
+    else if ([[segue identifier] isEqualToString:@"showLoginSegue"]) {
+        LoginViewController *loginViewController = [segue destinationViewController];
+        loginViewController.delegate = self;
+    }
+
+}
+
+#pragma mark - Login 
+
+-(void) didLoginWithController:(LoginViewController *)loginController {
+    [self dismissViewControllerAnimated:loginController completion:^{
+        [self onLogin]; // the method that displays the stuff on the screen
+    }];
 }
 
 - (void)didReceiveMemoryWarning
